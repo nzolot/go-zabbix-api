@@ -24,10 +24,11 @@ const (
 type HostInterface struct {
 	DNS   string        `json:"dns"`
 	IP    string        `json:"ip"`
-	Main  int           `json:"main"`
+	Main  int           `json:"main,string"`
 	Port  string        `json:"port"`
-	Type  InterfaceType `json:"type"`
-	UseIP int           `json:"useip"`
+	Type  InterfaceType `json:"type,string"`
+	UseIP int           `json:"useip,string"`
+	InterfaceId int     `json:"interfaceid,string"`
 }
 
 // HostInterfaces is an array of HostInterface
