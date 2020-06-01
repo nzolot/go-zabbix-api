@@ -53,10 +53,12 @@ type TriggerFunctions []TriggerFunction
 // Trigger represent Zabbix trigger object
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/trigger/object
 type Trigger struct {
-	TriggerID   string `json:"triggerid,omitempty"`
-	Description string `json:"description"`
-	Expression  string `json:"expression"`
-	Comments    string `json:"comments"`
+	TriggerID          string `json:"triggerid,omitempty"`
+	Description        string `json:"description"`
+	Expression         string `json:"expression"`
+	RecoveryMode       int    `json:"recovery_mode,string"`
+	RecoveryExpression string `json:"recovery_expression"`
+	Comments           string `json:"comments"`
 	//TemplateId  string    `json:"templateid"`
 	//Value ValueType `json:""`
 
