@@ -12,6 +12,9 @@ type Macro struct {
 // Macros is an array of Macro
 type Macros []Macro
 
+// Tags is an array of Macro
+type Tags []Macro
+
 // MacrosGet Wrapper for usermacro.get
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/usermacro/get
 func (api *API) MacrosGet(params Params) (res Macros, err error) {
