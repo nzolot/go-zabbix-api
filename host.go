@@ -73,7 +73,7 @@ func (api *API) HostsGetByHostGroups(hostGroups HostGroups) (res Hosts, err erro
 
 // HostGetByID Gets host by Id only if there is exactly 1 matching host.
 func (api *API) HostGetByID(id string) (res *Host, err error) {
-	hosts, err := api.HostsGet(Params{"hostids": id, "selectMacros": "extend", "selectInterfaces": "extend"})
+	hosts, err := api.HostsGet(Params{"hostids": id, "selectMacros": "extend", "selectTags": "extend", "selectInterfaces": "extend"})
 	if err != nil {
 		return
 	}
@@ -89,7 +89,7 @@ func (api *API) HostGetByID(id string) (res *Host, err error) {
 
 // HostGetByHost Gets host by Host only if there is exactly 1 matching host.
 func (api *API) HostGetByHost(host string) (res *Host, err error) {
-	hosts, err := api.HostsGet(Params{"filter": map[string]string{"host": host}, "selectMacros": "extend"})
+	hosts, err := api.HostsGet(Params{"filter": map[string]string{"host": host}, "selectMacros": "extend", "selectTags": "extend"})
 	if err != nil {
 		return
 	}
