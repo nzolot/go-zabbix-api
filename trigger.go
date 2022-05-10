@@ -62,15 +62,21 @@ type Trigger struct {
 	//TemplateId  string    `json:"templateid"`
 	//Value ValueType `json:""`
 
-	Priority     SeverityType     `json:"priority,string"`
-	Status       StatusType       `json:"status,string"`
-	Dependencies Triggers         `json:"dependencies,omitempty"`
-	Functions    TriggerFunctions `json:"functions,omitempty"`
+	Priority     SeverityType       `json:"priority,string"`
+	Status       StatusType         `json:"status,string"`
+	Dependencies DependencyTriggers `json:"dependencies,omitempty"`
+	Functions    TriggerFunctions   `json:"functions,omitempty"`
 	// Items contained by the trigger in the items property.
 	ContainedItems Items `json:"items,omitempty"`
 	// Hosts that the trigger belongs to in the hosts property.
 	ParentHosts Hosts `json:"hosts,omitempty"`
 }
+
+type DependencyTrigger struct {
+	TriggerID string `json:"triggerid,omitempty"`
+}
+type DependencyTriggers []DependencyTrigger
+
 
 // Triggers is an array of Trigger
 type Triggers []Trigger
