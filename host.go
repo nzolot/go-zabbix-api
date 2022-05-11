@@ -157,6 +157,10 @@ func (api *API) HostsDeleteByIds(ids []string) (err error) {
 		if e, ok := err.(*Error); ok && e.Code == -32500 {
 			response, err = api.CallWithError("host.delete", ids)
 		}
+        // Zabbix >=5.4 returns different error code
+        if e, ok := err.(*Error); ok && e.Code == -32602 {
+            response, err = api.CallWithError("host.delete", ids)
+        }
 	}
 	if err != nil {
 		return
