@@ -70,6 +70,8 @@ type Trigger struct {
 	ContainedItems Items `json:"items,omitempty"`
 	// Hosts that the trigger belongs to in the hosts property.
 	ParentHosts Hosts `json:"hosts,omitempty"`
+    // Tags
+	Tags Tags `json:"tags,omitempty"`
 }
 
 type DependencyTrigger struct {
@@ -93,7 +95,7 @@ func (api *API) TriggersGet(params Params) (res Triggers, err error) {
 
 // TriggerGetByID Gets trigger by Id only if there is exactly 1 matching host.
 func (api *API) TriggerGetByID(id string) (res *Trigger, err error) {
-	triggers, err := api.TriggersGet(Params{"triggerids": id})
+	triggers, err := api.TriggersGet(Params{"triggerids": id, "selectTags": "extend"})
 	if err != nil {
 		return
 	}

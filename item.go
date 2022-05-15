@@ -116,6 +116,7 @@ type Item struct {
 	History      string    `json:"history,omitempty"`
 	Trends       string    `json:"trends,omitempty"`
 	TrapperHosts string    `json:"trapper_hosts,omitempty"`
+	Tags         Tags      `json:"tags,omitempty"`
 
 	// Fields below used only when creating applications
 	ApplicationIds []string `json:"applications,omitempty"`
@@ -151,7 +152,7 @@ func (api *API) ItemsGet(params Params) (res Items, err error) {
 
 // ItemGetByID Gets item by Id only if there is exactly 1 matching host.
 func (api *API) ItemGetByID(id string) (res *Item, err error) {
-	items, err := api.ItemsGet(Params{"itemids": id})
+	items, err := api.ItemsGet(Params{"itemids": id, "selectTags": "extend"})
 	if err != nil {
 		return
 	}
@@ -167,7 +168,7 @@ func (api *API) ItemGetByID(id string) (res *Item, err error) {
 
 // ItemsGetByApplicationID Gets items by application Id.
 func (api *API) ItemsGetByApplicationID(id string) (res Items, err error) {
-	return api.ItemsGet(Params{"applicationids": id})
+	return api.ItemsGet(Params{"applicationids": id, "selectTags": "extend"})
 }
 
 // ItemsCreate Wrapper for item.create
