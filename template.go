@@ -9,7 +9,6 @@ type Template struct {
 	Name            string     `json:"name,omitempty"`
 	Groups          HostGroups `json:"groups"`
 	UserMacros      Macros     `json:"macros"`
-	Tags            Tags       `json:"tags"`
 	LinkedTemplates Templates  `json:"templates,omitempty"`
 	TemplatesClear  Templates  `json:"templates_clear,omitempty"`
 	LinkedHosts     Hosts      `json:"hosts,omitempty"`
