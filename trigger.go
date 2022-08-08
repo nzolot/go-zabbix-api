@@ -70,7 +70,7 @@ type Trigger struct {
 	ContainedItems Items `json:"items,omitempty"`
 	// Hosts that the trigger belongs to in the hosts property.
 	ParentHosts Hosts `json:"hosts,omitempty"`
-    // Tags
+	// Tags
 	Tags Tags `json:"tags,omitempty"`
 }
 
@@ -78,7 +78,6 @@ type DependencyTrigger struct {
 	TriggerID string `json:"triggerid,omitempty"`
 }
 type DependencyTriggers []DependencyTrigger
-
 
 // Triggers is an array of Trigger
 type Triggers []Trigger
