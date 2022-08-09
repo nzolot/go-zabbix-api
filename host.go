@@ -1,42 +1,17 @@
 package zabbix
 
-type (
-	// AvailableType (readonly) Availability of Zabbix agent
-	// see "available" in: https://www.zabbix.com/documentation/3.2/manual/api/reference/host/object
-	AvailableType int
-
-	// StatusType Status and function of the host.
-	// see "status" in:	https://www.zabbix.com/documentation/3.2/manual/api/reference/host/object
-	StatusType int
-)
-
-const (
-	// Unknown (default)
-	Unknown AvailableType = 0
-	// Available host is available
-	Available AvailableType = 1
-	// Unavailable host is unavailable
-	Unavailable AvailableType = 2
-)
-
-const (
-	// Monitored monitored host(default)
-	Monitored StatusType = 0
-	// Unmonitored unmonitored host
-	Unmonitored StatusType = 1
-)
-
 // Host represent Zabbix host object
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/host/object
 type Host struct {
-	HostID     string        `json:"hostid,omitempty"`
-	Host       string        `json:"host"`
-	Available  AvailableType `json:"available,string"`
-	Error      string        `json:"error"`
-	Name       string        `json:"name"`
-	Status     StatusType    `json:"status,string"`
-	UserMacros Macros        `json:"macros"`
-	Tags       Tags          `json:"tags"`
+	HostID      string        `json:"hostid,omitempty"`
+	Host        string        `json:"host"`
+	Available   AvailableType `json:"available,string"`
+	Error       string        `json:"error"`
+	Name        string        `json:"name"`
+	Status      StatusType    `json:"status,string"`
+	UserMacros  Macros        `json:"macros"`
+	Tags        Tags          `json:"tags"`
+	ProxyHostId string        `json:"proxy_hostid,omitempty"`
 
 	// Fields below used only when creating hosts
 	GroupIds    HostGroupIDs   `json:"groups,omitempty"`
