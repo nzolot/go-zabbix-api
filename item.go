@@ -117,6 +117,9 @@ type Item struct {
 	Trends       string    `json:"trends,omitempty"`
 	TrapperHosts string    `json:"trapper_hosts,omitempty"`
 	Tags         Tags      `json:"tags,omitempty"`
+	PreProcs     PreProcs  `json:"preprocessing,omitempty"`
+	MasterItem   string    `json:"master_itemid,omitempty"`
+	Status       int       `json:"status,string"`
 
 	// Fields below used only when creating applications
 	ApplicationIds []string `json:"applications,omitempty"`
@@ -145,6 +148,7 @@ func (items Items) ByKey() (res map[string]Item) {
 func (api *API) ItemsGet(params Params) (res Items, err error) {
 	if _, present := params["output"]; !present {
 		params["output"] = "extend"
+		params["selectPreprocessing"] = "extend"
 	}
 	err = api.CallWithErrorParse("item.get", params, &res)
 	return

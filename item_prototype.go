@@ -38,6 +38,9 @@ type ItemPrototype struct {
 	Status               int       `json:"status,string"`
 	Templateid           string    `json:"templateid,omitempty"`
 	TrapperHosts         string    `json:"trapper_hosts,omitempty"`
+	Tags                 Tags      `json:"tags,omitempty"`
+	PreProcs             PreProcs  `json:"preprocessing,omitempty"`
+	MasterItem           string    `json:"master_itemid,omitempty"`
 	Trends               string    `json:"trends,omitempty"`
 	Units                string    `json:"units,omitempty"`
 	Username             string    `json:"username,omitempty"`
@@ -56,6 +59,8 @@ func (api *API) ItemPrototypesGet(params Params) (res ItemPrototypes, err error)
 	if _, present := params["output"]; !present {
 		params["output"] = "extend"
 	}
+	params["selectTags"] = "extend"
+	params["selectPreprocessing"] = "extend"
 	err = api.CallWithErrorParse("itemprototype.get", params, &res)
 	return
 }

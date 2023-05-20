@@ -6,6 +6,15 @@ type (
 	TimestampType uint64
 )
 
+type PreProc struct {
+	Type               string `json:"type"`
+	Params             string `json:"params,omitempty"`
+	ErrorHandler       string `json:"error_handler"`
+	ErrorHandlerParams string `json:"error_handler_params"`
+}
+
+type PreProcs []PreProc
+
 const (
 	Available   AvailableType = 1
 	Unavailable AvailableType = 2

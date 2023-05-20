@@ -56,11 +56,23 @@ type LLDRule struct {
 	Templateid           string        `json:"templateid,omitempty"`
 	TrapperHosts         string        `json:"trapper_hosts,omitempty"`
 	Username             string        `json:"username,omitempty"`
-	Filter               LLDRuleFilter `json:"filter"`
+	Filter               LLDRuleFilter `json:"filter,omitempty"`
+	PreProcs             PreProcs      `json:"preprocessing,omitempty"`
+	LLDMacroPaths        LLDMacroPaths `json:"lld_macro_paths,omitempty"`
 }
 
 // LLDRules is an array of LLDRule
 type LLDRules []LLDRule
+
+// LLDRule represent Zabbix low-level discovery rule(LLD rule) object
+// https://www.zabbix.com/documentation/6.0/en/manual/api/reference/discoveryrule/object#lld-macro-path
+type LLDMacroPath struct {
+	Macro string `json:"lld_macro"` // Required
+	Path  string `json:"path"`      // Required
+}
+
+// LLDRules is an array of LLDRule
+type LLDMacroPaths []LLDMacroPath
 
 // DiscoveryRulesGet Wrapper for discoveryrule.get
 // https://www.zabbix.com/documentation/3.2/manual/api/reference/discoveryrule/get
